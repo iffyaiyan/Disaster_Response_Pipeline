@@ -1,24 +1,40 @@
-# Disaster Response Pipeline Project
-This project is to classify disaster response messages through machine learning. 
+# Disaster_Response_Pipeline Project
+## Project Overview 
+In this course, you've learned and built on your data engineering skills to expand your opportunities and potential as a data scientist. In this project, you'll apply these skills to analyze disaster data from Figure Eight to build a model for an API that classifies disaster messages.
 
-## Content
-- Data
-  - process_data.py: reads in the data, cleans and stores it in a SQL database. Basic usage is python process_data.py MESSAGES_DATA CATEGORIES_DATA NAME_FOR_DATABASE
-  - disaster_categories.csv and disaster_messages.csv (dataset)
-  - DisasterResponse.db: created database from transformed and cleaned data.
-- Models
-  - train_classifier.py: includes the code necessary to load data, transform it using natural language processing, run a machine learning model using GridSearchCV and train it. Basic usage is python train_classifier.py DATABASE_DIRECTORY SAVENAME_FOR_MODEL  
-- App
-  - run.py: Flask app and the user interface used to predict results and display them.
-  - templates: folder containing the html templates
+In the Project Workspace, you'll find a data set containing real messages that were sent during disaster events. You will be creating a machine learning pipeline to categorize these events so that you can send the messages to an appropriate disaster relief agency.
 
-## Example:
-> python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db
+Your project will include a web app where an emergency worker can input a new message and get classification results on several categories. The web app will also display visualizations of the data. This project will show off your software skills, including your ability to create basic data pipelines and write clean, organized code!
 
-> python train_classifier.py ../data/DisasterResponse.db classifier.pkl
+Project Components There are three components we'll need to complete for this project.
 
-> python run.py
+ETL Pipeline In a Python script, process_data.py, write a data cleaning pipeline that: Loads the messages and categories datasets Merges the two datasets Cleans the data Stores it in a SQLite database
 
+ML Pipeline In a Python script, train_classifier.py, write a machine learning pipeline that: Loads data from the SQLite database Splits the dataset into training and test sets Builds a text processing and machine learning pipeline Trains and tunes a model using GridSearchCV Outputs results on the test set Exports the final model as a pickle file
+
+Flask Web App We will be taking the user message and classify them into 36 categories. There are some beautiful visualization of the data as well
+
+## File Description:
+* **process_data.py**: This python excutuble code takes as its input csv files containing message data and message categories (labels), and then creates a SQL database
+* **train_classifier.py**: This code trains the ML model with the SQL data base
+* **ETL Pipeline Preparation.ipynb**:  process_data.py development procces
+* **ML Pipeline Preparation.ipynb**: train_classifier.py. development procces
+* **data**: This folder contains sample messages and categories datasets in csv format.
+* **app**: cointains the run.py to iniate the web app.
+
+### Instructions:
+1. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. Run the following command in the app's directory to run your web app.
+    `python run.py`
+
+3. Go to http://0.0.0.0:3001/
+   Or Go to http://localhost:3001/
 ## Screenshots
 This is the frontpage:
 ![Alt text](https://github.com/Niaz-Makdum/Project-Disaster-Response-Pipelines/blob/master/Screenshot1.PNG)
